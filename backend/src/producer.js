@@ -26,7 +26,7 @@ const produce = async () => {
         messages: [
           {
             key: String(i),
-            value: String(Math.random() * (20 - 15) + 15)
+            value: JSON.stringify(message)
           }
         ]
       })
@@ -41,12 +41,16 @@ const produce = async () => {
 }
 
 function messageGenerator() {
-  const result = {}
-  // const items = ['Bad', 'Good', 'Average', 'Excellent'];
-  // result.push(quality = items[Math.floor(Math.random() * items.length)]);
-  // result.push(timestamp = Math.round(new Date().getTime() / 1000));
-  // result.push(value = Math.random() * (20 - 15) + 15);
-  return result
+  const items = ['Bad', 'Good', 'Average', 'Excellent'];
+  const quality = items[Math.floor(Math.random() * items.length)];
+  const timestamp = Math.round(new Date().getTime() / 1000);
+  value = Math.round(Math.random() * (20 - 15) + 15);
+  return {
+    access_path: topic,
+    quality,
+    timestamp,
+    value
+  }
 }
 
 module.exports = produce
